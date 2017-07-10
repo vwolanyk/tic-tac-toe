@@ -4,10 +4,13 @@ var boardSquares = document.querySelectorAll('td.square');
 var board = document.querySelector("div#board")
 var player = 1
 var startButton = document.querySelector("button.start")
-
+var playerTurn = document.querySelector("h2.player")
 startButton.addEventListener('click', function(){
   board.style.display = "block";
+  playerTurn.innerHTML = "It's Yer Move Player: " + player;
 })
+
+
 boardSquares.forEach(function(square, index){
 
 square.style.backgroundColor = "purple";
@@ -21,21 +24,26 @@ square.addEventListener('click', function(){
   var skull = document.createElement('img');
   skull.src = 'img/skull2.jpg';
   square.append(skull);
-  return player = 2;
+  player = 2;
+  playerTurn.innerHTML = "It's Yer Move Player: " + player;
+
 } else if(player === 2){
 var bones = document.createElement('img');
 bones.src = 'img/bones.jpg';
 square.append(bones);
-return player = 1;
+ player = 1;
+playerTurn.innerHTML = "It's Yer Move Player: " + player;
 }
 } else {
-  return alert("ARRGH!!! That Block is TAKEN!!");
+  return alert("ARRGH!!! That Block Be TAKEN Matey!!");
 }
 
 
 
 
 })
+
+
 
 })
 
