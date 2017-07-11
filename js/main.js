@@ -26,8 +26,8 @@ startButton.innerHTML = "New Game";
   var board = document.querySelector("div#board");
   var playerTurn = document.querySelector("h2.player");
   var moves = document.querySelector("h2.moves");
+  var win = false;
 
-boardSquares.forEach(function(square){square.setAttribute("dataValue","")})
   // Reveal the Board - Initially Invisible
   board.style.display = "block";
 
@@ -45,7 +45,7 @@ boardSquares.forEach(function(square){square.setAttribute("dataValue","")})
     // Styling - each board square purple(could add to CSS)
     square.style.backgroundColor = "purple";
 
-console.log(square.innerHTML);
+
 
 
 
@@ -53,8 +53,8 @@ console.log(square.innerHTML);
 // Click HAndler function for board squares
 clickHandlerBoard = function(e){
     e.stopPropagation;
-    var win;
-      if (square.innerHTML === ""){
+
+      if (square.innerHTML === "" ){
           if (player === 1){
             var skull = document.createElement('img');
             skull.src = 'img/skull2.jpg';
@@ -84,6 +84,8 @@ clickHandlerBoard = function(e){
         if (possibility[0].dataset.value === "skull" && possibility[1].dataset.value === "skull" && possibility[2].dataset.value === "skull"){ console.log("Skulls Win!");
         win = true;
 
+
+
       } else if(possibility[0].dataset.value === "bones" && possibility[1].dataset.value === "bones" && possibility[2].dataset.value === "bones"){  console.log("Bones Win!");
       win = true;
       }
@@ -99,8 +101,8 @@ clickHandlerBoard = function(e){
 }
 //
   // Each square gets a click listener
-  event = square.addEventListener('click', clickHandlerBoard);
-console.log("event", event)
+  square.addEventListener('click', clickHandlerBoard);
+
 
 
 })
