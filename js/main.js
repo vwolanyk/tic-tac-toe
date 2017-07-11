@@ -1,10 +1,10 @@
 document.addEventListener('DOMContentLoaded', function(){
 
-
 // Def initial variables
 var startButton = document.querySelector("button.start");
 var newGameButton = document.querySelector("button.newgame");
 var moveCount = 0;
+var player = 1;
 
 var row1var = document.getElementById("row1").children;
 var row2var = document.getElementById("row2").children;
@@ -18,11 +18,6 @@ var winPossibilities = [row1var,row2var,row3var, column1, column2, column3, diag
 
 startButton.addEventListener('click', newGame)
 
-// newGameButton.addEventListener('click', function(){
-// newGame()
-// })
-
-
 // Game Method? Use this or no? Called when start button clicked
 function newGame(){
 startButton.innerHTML = "New Game";
@@ -31,7 +26,7 @@ startButton.innerHTML = "New Game";
   var board = document.querySelector("div#board");
   var playerTurn = document.querySelector("h2.player");
   var moves = document.querySelector("h2.moves");
-  var player = 1;
+
 boardSquares.forEach(function(square){square.setAttribute("dataValue","")})
   // Reveal the Board - Initially Invisible
   board.style.display = "block";
@@ -44,7 +39,7 @@ boardSquares.forEach(function(square){square.setAttribute("dataValue","")})
   // Iterates over each square in game board
   boardSquares.forEach(function(square, index){
     square.innerHTML = "";
-    square.removeAttribute("dataValue");
+    square.removeAttribute("data-value");
     // Adds a number to square(for the formula to determine WIN)
     square.classList.add("sq"+(index+1));
     // Styling - each board square purple(could add to CSS)
@@ -74,7 +69,7 @@ clickHandlerBoard = function(e){
             } else if(player === 2){
           var bones = document.createElement('img');
           bones.src = 'img/bones.jpg';
-          square.setAttribute("dataValue","bones")
+          square.setAttribute("data-value","bones")
           square.append(bones);
 
           square.removeEventListener('click',clickHandlerBoard);
@@ -87,9 +82,10 @@ clickHandlerBoard = function(e){
 
       winPossibilities.forEach(function(possibility){
         if (possibility[0].dataset.value === "skull" && possibility[1].dataset.value === "skull" && possibility[2].dataset.value === "skull"){ console.log("Skulls Win!");
-        boardSquares.forEach(function(square){square.removeAttribute("dataValue")})
+        win = true;
+
       } else if(possibility[0].dataset.value === "bones" && possibility[1].dataset.value === "bones" && possibility[2].dataset.value === "bones"){  console.log("Bones Win!");
-      boardSquares.forEach(function(square){square.removeAttribute("dataValue")})
+      win = true;
       }
 
 
