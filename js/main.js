@@ -1,8 +1,7 @@
 document.addEventListener('DOMContentLoaded', function(){
 
 // Def initial variables
-var startButton = document.querySelector("button.start");
-var newGameButton = document.querySelector("button.newgame");
+var resetButton = document.querySelector("button.reset");
 var moveCount = 0;
 var player = 1;
 
@@ -16,7 +15,7 @@ var diagLeft = [row1var[0],row2var[1],row3var[2]];
 var diagRight = [row3var[0],row2var[1],row1var[2]];
 var winPossibilities = [row1var,row2var,row3var, column1, column2, column3, diagLeft, diagRight];
 
-startButton.addEventListener('click', newGame)
+
 
 // Game Method? Use this or no? Called when start button clicked
 function newGame(){
@@ -44,11 +43,6 @@ startButton.innerHTML = "New Game";
     square.classList.add("sq"+(index+1));
     // Styling - each board square purple(could add to CSS)
     square.style.backgroundColor = "purple";
-
-
-
-
-
 
 // Click HAndler function for board squares
 clickHandlerBoard = function(e){
@@ -83,8 +77,6 @@ clickHandlerBoard = function(e){
       winPossibilities.forEach(function(possibility){
         if (possibility[0].dataset.value === "skull" && possibility[1].dataset.value === "skull" && possibility[2].dataset.value === "skull"){ console.log("Skulls Win!");
         win = true;
-
-
 
       } else if(possibility[0].dataset.value === "bones" && possibility[1].dataset.value === "bones" && possibility[2].dataset.value === "bones"){  console.log("Bones Win!");
       win = true;
