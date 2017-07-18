@@ -16,8 +16,33 @@ img { width: 100%;
         /*display: none;}*/
 }
 
+.winningSquare {
+  border: 10px solid red;
+}
 table {
   margin:auto;
   border: 1px solid black;
   border-collapse: collapse;
+}
+
+#winningHeading {
+
+  padding: 20px 0;
+  background-color: orange;
+  color: black;
+  font-size: 3em;
+  border: none;
+  width: 60%;
+  margin: auto;
+}
+#winBox{visibility: hidden;}
+.reset {
+  border-radius: 30%;
+  padding: 20px 0;
+  background-color: black;
+  color: white;
+  font-size: 3em;
+  border: none;
+  width: 60%;
+  margin: 10px 0;
 }

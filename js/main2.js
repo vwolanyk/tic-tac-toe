@@ -23,25 +23,28 @@ var playerTurn = document.querySelector("h2.player");
 var moves = document.querySelector("h2.moves");
 var win = false;
 var winner;
+var winning = document.createElement("div")
+var winningHeading = document.createElement("h1")
 
 // Game Board Counts/Stats
 
 playerTurn.innerHTML = "It's Yer Move Player: " + player;
 moves.innerHTML = "Total Moves: " + moveCount;
 
-function getSquareClickHandler(square) {
+boardSquares.forEach(function(square,index){
 
   function squareClickHandler(event){
     // Clear everything
-    event.stopPropagation();
-    event.preventDefault();
+    event.stopPropagation;
+    event.preventDefault;
 
-    if (square.innerHTML === "" && win === false ){
+    if (square.innerHTML === "" && win === false){
       if (player === 1){
         var skull = document.createElement('img');
         skull.src = 'img/skull2.jpg';
         square.setAttribute("data-value","skull")
         square.append(skull);
+
         moveCount++;
         moves.innerHTML = "Total Moves: " + moveCount;
         player = 2;
@@ -51,6 +54,7 @@ function getSquareClickHandler(square) {
         bones.src = 'img/bones.jpg';
         square.setAttribute("data-value","bones")
         square.append(bones);
+
         moveCount++
         moves.innerHTML = "Total Moves: " + moveCount;
         player = 1;
@@ -59,73 +63,82 @@ function getSquareClickHandler(square) {
       //end of if inner HTML empty
     }
     //end of if inner HTML empty
-
+    tie();
     // After A Square is Filled Check for a Win
     winPossibilities.forEach(function(possibility){
       if (possibility[0].dataset.value === "skull" && possibility[1].dataset.value === "skull" && possibility[2].dataset.value === "skull"){ console.log("Skulls Win!");
-      possibility[0].classList.add("winningSquare");
-      possibility[1].classList.add("winningSquare");
-      possibility[2].classList.add("winningSquare");
+      possibility[0].style.border = "10px solid red";
+      possibility[1].style.border = "10px solid red";
+      possibility[2].style.border = "10px solid red";
 
-      winBox.style.display = "block";
       winningHeading.innerHTML = 'Skullz WINS!!!';
-      winningImage.src = 'img/skull2.jpg';
-      winningImage.style.width = '30%';
+      var skullWinnerImage = skull.cloneNode(true);
+      skullWinnerImage.style.width = '30%';
+      winning.append(winningHeading);
+      winning.append(skullWinnerImage);
+      board.append(winning);
 
-      win = true;
+      return win = true;
 
     } else if(possibility[0].dataset.value === "bones" && possibility[1].dataset.value === "bones" && possibility[2].dataset.value === "bones"){  console.log("Bones Win!");
     winner = "Bones";
-    possibility[0].classList.add("winningSquare");
-    possibility[1].classList.add("winningSquare");
-    possibility[2].classList.add("winningSquare");
+    possibility[0].style.border = "10px solid red";
+    possibility[1].style.border = "10px solid red";
+    possibility[2].style.border = "10px solid red";
 
-    winBox.style.display = "block";
     winningHeading.innerHTML = 'Bones WINS!!!';
-    winningImage.src = 'img/bones.jpg';
-    winningImage.style.width = '30%';
-
-     win = true;
+    var boneswinnerImage = bones.cloneNode(true);
+    boneswinnerImage.style.width = '30%';
+    winning.append(winningHeading);
+    winning.append(boneswinnerImage);
+    board.append(winning);
+    return win = true;
 
     }
     // WIN POSSIBILITIES END
   });
   // WIN POSSIBILITIES END
+  function tie(){
+    if (moveCount === 9){
+
+      winningHeading.innerHTML = 'TIE';
+      winning.append(winningHeading);
+      board.append(winning);
+      return win = true;
+    }
+  }
+
 
     // Square ClickHandler END
   }
-  // Square ClickHandler END
-  return squareClickHandler;
-}
-
-
-boardSquares.forEach(function(square,index){
-
+  //
 
 // ADD EVENT LISTENER TO EACH SQUARE
-square.addEventListener('click', getSquareClickHandler(square));
+square.addEventListener('click', squareClickHandler);
 
 
   // End of Squares Iteration
 })
 // End of Squares Iteration
 
+
+
 function resetGame(e){
   console.log('reset clicked');
-  // moveCount = 0;
-  // player = 1;
-  // playerTurn.innerHTML = "It's Yer Move Player: " + player;
-  // moves.innerHTML = "Total Moves: " + moveCount;
-  // moveCount = 0;
-  // player = 1;
-  boardSquares.forEach(function(square,index){
-    // square.removeAttribute("data-value");
-    // square.innerHTML = "";
-    // square.classList.remove("winningSquare");
-    square.style.border = "5px solid black;"
-    // winBox.style.display = "none";
 
-    square.addEventListener('click', getSquareClickHandler(square));
+  win = false;
+
+  boardSquares.forEach(function(square,index){
+    square.removeAttribute("data-value");
+    square.innerHTML = "";
+    square.classList.remove("winningSquare");
+    square.style = "";
+    winning.innerHTML = "";
+    winBox.style.display = "none";
+    moveCount = 0;
+    player = 1;
+    playerTurn.innerHTML = "It's Yer Move Player: " + player;
+    moves.innerHTML = "Total Moves: " + moveCount;
 
   })
 
@@ -134,6 +147,8 @@ function resetGame(e){
 // RESET GAME FUNCTION END
 
 resetButton.addEventListener('click', resetGame);
+
+
 
   //END OF DOMContentLoaded
 });
