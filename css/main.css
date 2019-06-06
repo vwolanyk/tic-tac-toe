@@ -1,20 +1,15 @@
-body { text-align: center;
-      width: 80%;}
 img { width: 100%;
     vertical-align: middle;
 
 }
 .square{
-    width:100px;
-    height:100px;
-    border: 5px solid black;
+    width:8rem;
+    height:8rem;
+    border: 10px solid lightgrey;
     border-collapse: collapse;
     background-color: purple;
 }
 
-#board {margin: auto;
-        /*display: none;}*/
-}
 
 .winningSquare {
   border: 10px solid red;
@@ -37,12 +32,7 @@ table {
 }
 #winBox{visibility: hidden;}
 .reset {
-  border-radius: 30%;
-  padding: 20px 0;
-  background-color: black;
   color: white;
-  font-size: 3em;
-  border: none;
-  width: 60%;
-  margin: 10px 0;
+  font-size: 4rem;
+  padding: 10em;
 }

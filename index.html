@@ -3,21 +3,35 @@
   <head>
     <meta charset="utf-8">
     <title>SkullzNxBonz</title>
-
     <link rel="icon" href="img/favicon.ico" type="image/x-icon"/>
-
-      <link rel="stylesheet" href="css/normalize.min.css">
-        <link rel="stylesheet" href="css/reset.css">
-        <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/normalize.min.css">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   </head>
   <body>
+    <div class="jumbotron text-center" style="background-color: white; padding: 15px 20px; margin: 0;">
+      <div class="row">
+        <div class="col-3" >
+          <img src="img/skull2.jpg" alt="" style="width: 80%;" >
+        </div>
+        <div class="col-6" style="margin:auto; align-items:center;" >
+          <h1 style="font-family: Impact, Charcoal, sans-serif; font-size: 5rem;" >Skullz 'n Bonz</h1>
+          <div class="row" style="color: purple;">
+              <h2 class="player" style="margin: auto; font-size: 3rem; font-weight: bold;"></h2>
+          </div>
+          <div class="row">
+              <h2 class="moves" style="margin: auto; font-size: 2rem"></h2>
+          </div>
+        </div>
+        <div class="col-3">
+          <img src="img/bones.jpg" alt="" style="width: 80%;">
+        </div>
+      </div>
+    </div>
 
-    <h1>Skullz N xBonz</h1>
+ <div id="board" class="container text-center">
 
- <div id="board">
-
-   <h2 class="player"></h2>
-   <h2 class="moves"></h2>
     <table>
       <tr id="row1">
         <td class="square"></td>
@@ -42,8 +56,10 @@
     <img id = "winningImage" src="" alt="">
   </div>
 
-  <button type="button" name="reset" class = "reset">RESET</button>
+  <div class="container">
+    <button type="button" name="reset" class = " reset btn btn-dark btn-block" style="font-size:3rem; font-family: monospace; margin-top: 10px;">RESET</button>
+  </div>
 
-  <script src="js/main2.js"></script>
+  <script src="js/main.js"></script>
   </body>
 </html>
